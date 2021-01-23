@@ -2,20 +2,29 @@ import React from 'react';
 
 class Form extends React.Component {
     constructor(props) {
-        super(props);
-        this.state ={
-            name: {
-                value: ''
+        super(props)
+        this.state= {
+            firstName: {
+                value: ""
+            },
+            lastName: {
+                value: ""
             },
             role: {
-                value: ''
+                value: ""
             }
-        };
+        };  
     }
 
-    updateName = (name) => {
+    updateFirstName = (firstName) => {
         this.setState({
-            name: {value: name}
+            firstName: {value: firstName}
+        });
+    }
+
+    updateLastName = (lastName) => {
+        this.setState({
+            lastName: {value: lastName}
         });
     }
 
@@ -27,17 +36,17 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form onSubmit={e => this.props.handleSubmit(e, this.state.name, this.state.role)}>
-                <label htmlFor='name'>
-                    Name:
-                </label>
-                <input type='text' name='name' id='name' onChange={e => this.updateName(e.target.value)}/>
-                <label htmlFor='role'>
-                    Role:
-                </label>
-                <input type='text' name='role' id='role' onChange={e => this.updateRole(e.target.value)}/>
-                <button type='submit'>Submit</button>
-            </form>
+            <div className="form">
+                <form onSubmit={e => this.props.handleSubmit(e, this.state.firstName, this.state.lastName, this.state.role)}>
+                    <label>First Name:</label>
+                    <input type="text" onChange={e => this.updateFirstName(e.target.value)}></input>
+                    <label>Last Name:</label>
+                    <input type="text" onChange={e => this.updateLastName(e.target.value)}></input>
+                    <label>Role:</label>
+                    <input type="text" onChange={e => this.updateRole(e.target.value)}></input>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         )
     }
 }

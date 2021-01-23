@@ -2,17 +2,15 @@ import React from 'react';
 
 class Profile extends React.Component {
     render() {
-        const renderProfiles = this.props.profs.map((profile) => (
-            <li key={profile.id}>{profile.firstName} {profile.lastName} - {profile.role}</li>
-        ))
         return (
             <div>
-                <h1>Profiles:</h1>
-                    <ul>
-                    {renderProfiles}
-                    </ul>
+                <h2>Profiles:</h2>
+                <ul className="list-of-profiles">
+                    {this.props.profiles.map(profiles => 
+                    <li key={profiles.id}>{profiles.firstName} {profiles.lastName} - {profiles.role}</li>)}
+                </ul>
             </div>
-        );
+        )
     }
 }
 
